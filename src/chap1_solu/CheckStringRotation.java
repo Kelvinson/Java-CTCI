@@ -22,6 +22,8 @@ public class CheckStringRotation {
 		if (s1.length() != s2.length()) {	return false;}
 		char[] arr_s1 = s1.toCharArray();
 		char [] arr_s2 = s2.toCharArray();
+		
+		
 		for (int i = 0; i < arr_s1.length; i++) {
 			if (arr_s1[i] == arr_s2[0]) {
 				if (isPart_Rotation(arr_s1,arr_s2,i) && 
@@ -43,6 +45,13 @@ public class CheckStringRotation {
 	 * <p> which begins from  index are the part begains from 
 	 * <p> index 0 of string s2. This is the main part of the 
 	 * <p> the check function of isRotation.
+	 * <b> I made fucking mistake here, I should not let index 
+	 * <b> increment at the outer loop for in the iner loop 
+	 * <b> it has already incremented itself, so if next time use
+	 * <b> self increment in the inner loop but to be consistant 
+	 * <b> with another pointer in the inner loop fuck delete it. 
+	 * <b> so it is wrong writing this shit code 
+	 * <b> for (int i = index,j = 0; i < s1.length; i++)
 	 * @param s1
 	 * @param s2
 	 * @param index

@@ -25,16 +25,16 @@ public class testPart_Rotation {
 //		fail("Not yet implemented");
 	}
 	
-	public void test1() {
+/*	public void test1() {
 		
-//		String s1 = "waterbottle";
-//		String s2 = "lewaterbott";
-//		assertEquals(true,isPart_Rotation(s1.toCharArray(),s2.toCharArray(),9));	
-		String s3 = "aab";
+////		String s1 = "waterbottle";
+////		String s2 = "lewaterbott";
+////		assertEquals(true,isPart_Rotation(s1.toCharArray(),s2.toCharArray(),9));	
+//		String s3 = "aab";
 		String s4 = "baa";
 		assertEquals(true,isPart_Rotation(s3.toCharArray(),s4.toCharArray(),2));
 //		fail("Not yet implemented");
-	}
+	｝*/
 	
 	
 	/**

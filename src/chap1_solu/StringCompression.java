@@ -38,15 +38,15 @@ public class StringCompression {
 			char previousChar = currentChar;
 			currentChar = s.charAt(i);
 			if (currentChar != previousChar) {
-				str += previousChar;
-				str += count;
+				/*str += previousChar;
+				str += count;*/
+				str += "" + previousChar + count;
 				count = 1;
 			} else {
 				count ++;
 			}
 			if (i == s.length()-1) {
-				str += currentChar;
-				str += count;
+				str += "" + previousChar + count;
 			}
 		}
 		return str;

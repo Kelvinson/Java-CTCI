@@ -7,8 +7,8 @@ import java.util.Set;
 public class PalindromePermutation {
 
 	public static void main(String[] args) {
-		String s = "totcccoaa";
-		System.out.println(isPalindromePermutation(s));
+		String s = "taat";
+		System.out.println(isPalindromePermutation_Mcdowell(s));
 	}
 
 	public static boolean isPalindromePermutation(String s) {
@@ -47,6 +47,49 @@ public class PalindromePermutation {
 			}
 		}
 		return set.size() <= 1;
+	}
+	
+	public static int bitVectorize(String s) {
+		int bitChecker = 0;
+		char[] s_arr = s.toCharArray();
+		for ( char c : s_arr) {
+			bitChecker = toggleBitChecker(bitChecker,getValue(c));
+		}
+		return bitChecker;
+	}
+	
+	public static boolean noMoreThanOneZero(int i) {
+		if (i ==0 || hasOneZero(i)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public static boolean hasOneZero(int i) {
+		int mask = i - 1;
+		return ((mask & i) == 0); 
+	}
+	
+	public static boolean isPalindromePermutation_Mcdowell(String s) {
+		int bitChecker = bitVectorize(s);
+		return noMoreThanOneZero(bitChecker);
+	}
+	
+	public static int toggleBitChecker(int bitChecker,int index) {
+		if (index < 0) { return bitChecker;}
+		int mask = 1 << index;
+		if ((mask & bitChecker) > 0) {
+			bitChecker &= ~mask;
+		}
+		else {
+			bitChecker |= mask;
+		}
+		return bitChecker;
+	}
+	
+	public static int getValue(char c) {
+		int value = c - 'a';
+		return value;
 	}
 
 }

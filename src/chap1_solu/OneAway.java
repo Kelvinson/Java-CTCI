@@ -1,12 +1,11 @@
 package chap1_solu;
-
 public class OneAway {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s1 = "alee";
+		String s1 = "pales";
 		String s2 = "pale";
-		System.out.println(isOneEditAway(s1,s2));
+		System.out.println(isOneEditAway(s1, s2));
 	}
 
 	public static boolean isOneEditAway(String s1, String s2) {
@@ -14,13 +13,32 @@ public class OneAway {
 		int b = s2.length();
 		if (a == b) {
 			return isOneCharacterReplace(s1, s2);
+		} else if (a + 1 == b) {
+			return isOneDiffer(s2, s1);
+		} else if (a - 1 == b) {
+			return isOneDiffer(s1, s2);
 		} else {
-			if (a < b) {
-				return isOneDiffer(s2, s1);
+			return false;
+		}
+
+	}
+
+	public static boolean isOneDiffer_V2(String longer, String shorter) {
+		int i = 0;
+		int j = 0;
+		for (; i < longer.length() && j < shorter.length();) {
+			if (longer.charAt(i++) != shorter.charAt(j++)) {
+				if (i != j) {
+					return false;
+				} else {
+					i++;
+				}
 			} else {
-				return isOneDiffer(s1, s2);
+				i++;
+				j++;
 			}
 		}
+		return true;
 	}
 
 	public static boolean isOneDiffer(String longer, String shorter) {
@@ -36,8 +54,7 @@ public class OneAway {
 					moreThanOne = true;
 					j++;
 				}
-			}
-			else {
+			} else {
 				i++;
 				j++;
 			}

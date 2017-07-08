@@ -30,7 +30,9 @@ public class SoluRemoveDup {
 		}
 	}
 	
-	//McDowell's using set method;
+	// McDowell's using set and two pointers to iterate the whole list.
+	// node n will iterate all the nodes while previous will remove the 
+	// dups and become the result list. this version use buffer
 	public static void deleteDups(Node n) {
 		HashSet<Integer> set = new HashSet<Integer>();
 		Node previous = null;
@@ -42,6 +44,23 @@ public class SoluRemoveDup {
 				previous = n;
 			}
 			n = n.next;
+		}
+	}
+	
+	// this version does't use buffer
+	
+	public static void deleteDup1(Node head){
+		Node current = head;
+		while (current != null) {
+			Node runner = current;
+			while (runner.next != null) {
+				if (runner.next.val == current.val) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
+				}
+			}
+			current = current.next;
 		}
 	}
 	

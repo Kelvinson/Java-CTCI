@@ -9,7 +9,22 @@ public class SoluRemoveDup {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Node n1 = new Node(1);
+		Node n2 = new Node(1);
+		Node n3 = new Node(1);
+		Node n4 = new Node(1);
+		Node n5 = new Node(1);
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = n5;
+		Node n6 = n1;
+		deleteDups1(n6);
+		
+		while (n6 != null) {
+			System.out.println(n6.val);
+			n6 = n6.next;
+		}
 	}
 	
 	// my own naive solution
@@ -34,34 +49,49 @@ public class SoluRemoveDup {
 	// node n will iterate all the nodes while previous will remove the 
 	// dups and become the result list. this version use buffer
 	public static void deleteDups(Node n) {
+		if (n == null || n.next == null) {
+			return;
+		}
 		HashSet<Integer> set = new HashSet<Integer>();
-		Node previous = null;
+		Node current = null;
 		while (n != null) {
 			if (set.contains(n.val)) {
-				previous.next = n.next;
+				current.next = current.next.next;
 			} else {
 				set.add(n.val);
-				previous = n;
+				current = n;
 			}
 			n = n.next;
 		}
 	}
 	
-	// this version does't use buffer
+	// this version does't use buffer, use two pointers to remove the dup
+	// one is the current pointed node, another is a runner pointing to 
+	// the subsequent nodes to iterate all nodes behind this node 
 	
-	public static void deleteDup1(Node head){
-		Node current = head;
-		while (current != null) {
-			Node runner = current;
-			while (runner.next != null) {
-				if (runner.next.val == current.val) {
-					runner.next = runner.next.next;
-				} else {
-					runner = runner.next;
-				}
-			}
-			current = current.next;
+	public static void deleteDups1(Node head){
+		if (head == null || head.next == null) {
+			return;
 		}
+		while (head.next != null) {
+			Node current = head;
+			Node runner = head.next;
+			while (runner.next != null) {
+				if (runner.val == head.val) {
+					current.next = runner.next;
+				}
+				
+				else {
+					current = runner;
+				}
+				runner = runner.next;
+			}
+			if (runner.val == head.val) {
+				current.next = null;
+			}
+			head = head.next;
+		}
+		
 	}
 	
 

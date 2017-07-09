@@ -5,7 +5,7 @@ import java.util.HashSet;
 import chap2.LinkedList;
 import chap2.Node;
 
-public class SoluRemoveDup {
+public class Solu_removeDup {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -73,23 +73,17 @@ public class SoluRemoveDup {
 		if (head == null || head.next == null) {
 			return;
 		}
-		while (head.next != null) {
 			Node current = head;
-			Node runner = head.next;
+			while (current != null) {
+			Node  runner = current;
 			while (runner.next != null) {
-				if (runner.val == head.val) {
-					current.next = runner.next;
+				if (runner.next.val == current.val) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
 				}
-				
-				else {
-					current = runner;
-				}
-				runner = runner.next;
 			}
-			if (runner.val == head.val) {
-				current.next = null;
-			}
-			head = head.next;
+			current = current.next;
 		}
 		
 	}

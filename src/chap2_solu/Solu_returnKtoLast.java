@@ -14,7 +14,7 @@ public class Solu_returnKtoLast {
 		n2.next = n3;
 		n3.next = n4;
 		n4.next = n5;
-		Node n6 = returnKtoLast(n1,6);
+		Node n6 = returnKtoLast1(n1,3);
 		
 		while (n6 != null) {
 			System.out.println(n6.val);
@@ -34,6 +34,23 @@ public class Solu_returnKtoLast {
 			}
 		}
 		return head;
+	}
+	
+	// this is the solution the book CTCI gives, but I don't know how
+	public static Node returnKtoLast1(Node head, int k) {
+		Node p1 = head;
+		Node p2 = head;
+		for (int i = 0; i < k; i++) {
+			if (p1 == null) return null;
+			p1 = p1.next;
+		}
+		
+		while (p1 != null) {
+			p1 = p1.next;
+			p2 = p2.next;
+		}
+		
+		return p2;
 	}
 
 }

@@ -22,6 +22,10 @@ public class Node {
 		n.next = node;
 	}
 	
+	public Node() {
+		
+	}
+	
 	public static Node deleteNode(Node head, int d) {
 		Node n = head;
 		
